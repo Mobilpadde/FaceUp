@@ -12,7 +12,7 @@ Alternatively, if you do not have go, you can download the [w64 version](https:/
 
 An explanation of `config.json` is of course in order:
 
- * `UserId`: Your facebook user id
+ * `UserId`: Your facebook user id; used to not make it blink at your own messages
  * `Mail`: Your facebook e-mail
  * `Pass`: Your facebook password (Don't worry, it's only used to login to your facebook-account)
  * `Name`: Name of the hue you want to light up
