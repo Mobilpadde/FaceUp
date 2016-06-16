@@ -25,28 +25,34 @@ var (
     cfg Conf
 )
 
-func decodeCfg(){
-    file, errOpen := os.Open("./config.json")
-    if errOpen != nil {
-        log.Fatal(errOpen)
-    }
-
-    decoder := json.NewDecoder(file)
-
-    errDecode := decoder.Decode(&cfg)
-    if errDecode != nil {
-        log.Fatal(errDecode)
+func checkErr(err error){
+    if err != nil {
+        log.Fatal(err)
     }
 }
 
+func decodeCfg(){
+    file, err := os.Open("./config.json")
+    checkErr(err)
+
+    decoder := json.NewDecoder(file)
+
+    err = decoder.Decode(&cfg)
+    checkErr(err)
+}
+
 func setupLight(){
-    bridges, _ := hue.FindBridges()
+    bridges, err := hue.FindBridges()
+    checkErr(err)
+
     bridge := bridges[0]
 
     //user, _ := bridge.CreateUser("wowser")
     bridge.Login(cfg.Hueser) // user
 
-    l, _ := bridge.GetLightByName(cfg.Name)
+    l, err := bridge.GetLightByName(cfg.Name)
+    checkErr(err)
+
     light = l
 
     fbState = hue.LightState{
@@ -62,21 +68,23 @@ func init(){
 }
 
 func onMsg(msg *messenger.Message){
-    if cfg.UserId != msg.FromUserID {
-        oldState := hue.LightState{
-            On: light.State.On,
-            Bri: light.State.Bri,
-            Hue: uint16(light.State.Hue),
-        }
-
-        light.SetState(fbState)
-        
-        light.On()
-        time.Sleep(cfg.Speed * time.Millisecond)
-        light.Off()
-
-        light.SetState(oldState)
+    if cfg.UserId == msg.FromUserID {
+        return
     }
+
+    oldState := hue.LightState{
+        On: light.State.On,
+        Bri: light.State.Bri,
+        Hue: uint16(light.State.Hue),
+    }
+
+    light.SetState(fbState)
+    
+    light.On()
+    time.Sleep(cfg.Speed * time.Millisecond)
+    light.Off()
+
+    light.SetState(oldState)
 }
 
 func main(){
@@ -84,11 +92,9 @@ func main(){
 
     err := session.Login(cfg.Mail, cfg.Pass);
 
-    if err != nil {
-        log.Fatal(err)
-    } else {
-       log.Println("Yo, we're waiting for messages!")
-    }
+    checkErr(err)
+
+    log.Println("Yo, we're waiting for messages!")
 
     session.OnMessage(onMsg)
     session.Listen()
