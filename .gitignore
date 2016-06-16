@@ -1,3 +1,9 @@
+# Custom stuff
+config.json
+*.exe
+pkg/*
+src/*
+
 # Compiled Object files, Static and Dynamic libs (Shared Objects)
 *.o
 *.a
