@@ -1,5 +1,7 @@
 # FaceUp
 
+![https://zippy.gfycat.com/LoathsomePoorErmine.webm](https://zippy.gfycat.com/LoathsomePoorErmine.webm)
+
 Let a specific hue light up whenever someone writes you at [Messenger](http://messenger.com).
 
 It's pretty easy to use: Simply fill out `config.template.json`, save it as `config.json`, build and run `main`.
