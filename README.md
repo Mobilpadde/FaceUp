@@ -4,7 +4,7 @@ Let a specific hue light up whenever someone writes you at [Messenger](http://me
 
 It's pretty easy to use: Simply fill out `config.template.json`, save it as `config.json`, build and run `main`.
 
-Alternatively, if you do not have go, you can download the [w64 version](https://github.com/Mobilpadde/FaceUp/releases), but you still need to fill out the `config.json`.
+Alternatively, if you do not have go, you can download the [w64 version](https://github.com/Mobilpadde/FaceUp/releases), but still you'll have to fill out the `config.json`.
 
 ## config.json
 
