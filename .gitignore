@@ -1,5 +1,6 @@
 # Custom stuff
 config.json
+*.zip
 *.exe
 pkg/*
 src/*
