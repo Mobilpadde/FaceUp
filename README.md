@@ -1,6 +1,6 @@
 # FaceUp
 
-![https://zippy.gfycat.com/LoathsomePoorErmine.webm](https://zippy.gfycat.com/LoathsomePoorErmine.webm)
+Want to see a [demo](https://gfycat.com/LoathsomePoorErmine)?
 
 Let a specific hue light up whenever someone writes you at [Messenger](http://messenger.com).
 
