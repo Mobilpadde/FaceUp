@@ -1,28 +1,22 @@
 package main
 
 import (
+    "flag"
     "log"
     "time"
     "os"
     "encoding/json"
 
+    "conf"
+
     "github.com/1lann/messenger"
     "github.com/Collinux/GoHue"
 )
 
-type Conf struct{
-    UserId string
-    Mail string
-    Pass string
-    Name string
-    Speed time.Duration
-    Hueser string
-}
-
 var (
     light hue.Light
     fbState hue.LightState
-    cfg Conf
+    cfg conf.Conf
 )
 
 func checkErr(err error){
@@ -47,8 +41,7 @@ func setupLight(){
 
     bridge := bridges[0]
 
-    //user, _ := bridge.CreateUser("wowser")
-    bridge.Login(cfg.Hueser) // user
+    bridge.Login(cfg.Hueser)
 
     l, err := bridge.GetLightByName(cfg.Name)
     checkErr(err)
@@ -59,12 +52,6 @@ func setupLight(){
         XY: hue.BLUE,
         Bri: 254,
     }
-}
-
-
-func init(){
-    decodeCfg()
-    setupLight()
 }
 
 func onMsg(msg *messenger.Message){
@@ -87,7 +74,10 @@ func onMsg(msg *messenger.Message){
     light.SetState(oldState)
 }
 
-func main(){
+func listen(){
+    decodeCfg()
+    setupLight()
+
     session := messenger.NewSession();
 
     err := session.Login(cfg.Mail, cfg.Pass);
@@ -98,4 +88,15 @@ func main(){
 
     session.OnMessage(onMsg)
     session.Listen()
+}
+
+func main(){
+    generate := flag.Bool("g", false, "Need help generating a config?")
+    flag.Parse()
+
+    if *generate {
+        conf.Generate()
+    }
+
+    listen()
 }
