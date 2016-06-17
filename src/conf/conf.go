@@ -8,6 +8,7 @@ import (
     "encoding/json"
 
     "github.com/Collinux/GoHue"
+    "github.com/gosuri/uiprogress"
 )
 
 type Conf struct{
@@ -50,7 +51,13 @@ func Generate(){
     bridge := bridges[0]
 
     fmt.Println("Please authorize this program, by linking it on your bridge now; you've got 15 seconds.")
-    time.Sleep(15000 * time.Millisecond)
+    
+    uiprogress.Start()
+    bar := uiprogress.AddBar(15000 / 100).AppendCompleted().PrependElapsed()
+    for bar.Incr() {
+        time.Sleep(100 * time.Millisecond)
+    }
+
     hueser, err = bridge.CreateUser(mail)
     checkErr(err)
     cfg.Hueser = hueser
