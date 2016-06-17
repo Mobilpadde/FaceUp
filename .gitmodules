@@ -19,3 +19,12 @@
 [submodule "src/golang.org/x/tools"]
 	path = src/golang.org/x/tools
 	url = https://golang.org/x/tools
+[submodule "src/github.com/gosuri/uilive"]
+	path = src/github.com/gosuri/uilive
+	url = https://gituh.com/gosuri/uilive
+[submodule "src/github.com/gosuri/uiprogress"]
+	path = src/github.com/gosuri/uiprogress
+	url = https://gituh.com/gosuri/uiprogress
+[submodule "src/github.com/mattn/go-isatty"]
+	path = src/github.com/mattn/go-isatty
+	url = https://gituh.com/mattn/go-isatty
