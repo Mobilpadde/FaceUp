@@ -1,0 +1,21 @@
+[submodule "src/github.com/1lann/messenger"]
+	path = src/github.com/1lann/messenger
+	url = https://gihub.com/1lann/messenger
+[submodule "src/github.com/Collinux/GoHue"]
+	path = src/github.com/Collinux/GoHue
+	url = https://gihub.com/Collinux/GoHue
+[submodule "src/github.com/andybalholm/cascadia"]
+	path = src/github.com/andybalholm/cascadia
+	url = https://gihub.com/andybalholm/cascadia
+[submodule "src/github.com/golang/lint"]
+	path = src/github.com/golang/lint
+	url = https://gihub.com/golang/lint
+[submodule "src/github.com/puerkitobio/goquery"]
+	path = src/github.com/puerkitobio/goquery
+	url = https://gihub.com/puerkitobio/goquery
+[submodule "src/golang.org/x/net"]
+	path = src/golang.org/x/net
+	url = https://golang.org/x/net
+[submodule "src/golang.org/x/tools"]
+	path = src/golang.org/x/tools
+	url = https://golang.org/x/tools
