@@ -8,6 +8,8 @@ It's pretty easy to use: Simply fill out `config.template.json`, save it as `con
 
 Alternatively, if you do not have go, you can download the [w64 version](https://github.com/Mobilpadde/FaceUp/releases), but still you'll have to fill out the `config.json`.
 
+As of [v0.0.3](https://github.com/Mobilpadde/FaceUp/releases) you don't even have to fill out the config; simply use the `g`-flag and type in your information :D
+
 ## config.json
 
 An explanation of `config.json` is of course in order:
